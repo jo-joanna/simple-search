@@ -23,5 +23,7 @@ It allows you to search books with the titles, the descriptions and the covers (
 
 I include a link to amazon search based on the returned titles of the books. It uses `encodeURIComponent` to prevent errors on titles and use %20 inbetween.
 
-The components are styled with the library styled-components.
+The components are styled with the library styled-components and have accessibility properties.
 Redux Toolkit and RTKQ are used.
+
+There are Components Unit Tests, Eslint as well as typescript check on yarn build.
