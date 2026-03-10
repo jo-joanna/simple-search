@@ -28,7 +28,7 @@ export default function Home() {
 	};
 
 	return (
-		<>
+		<main style={{ width: '100%', maxWidth: '1440px' }}>
 			<Bar>
 				<Search inputHandler={searchHandler} inputText={inputText} />
 			</Bar>
@@ -40,6 +40,6 @@ export default function Home() {
 					)}
 				</SearchListWrapper>
 			</Suspense>
-		</>
+		</main>
 	);
 }

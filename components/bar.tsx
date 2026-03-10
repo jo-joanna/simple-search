@@ -8,15 +8,20 @@ const Wrapper = styled.div`
 	background-color: #f2f2f2;
 	display: flex;
 	align-items: center;
-	justify-content: right;
+	justify-content: flex-end;
 	font-weight: bold;
 	padding-right: 8px;
 `;
 
 type BarProps = {
 	children: ReactNode;
+	ariaLabel?: string;
 };
 
-export const Bar = ({ children }: BarProps) => {
-	return <Wrapper>{children}</Wrapper>;
+export const Bar = ({ children, ariaLabel = 'Toolbar' }: BarProps) => {
+	return (
+		<Wrapper role='toolbar' aria-label={ariaLabel}>
+			{children}
+		</Wrapper>
+	);
 };

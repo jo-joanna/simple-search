@@ -9,7 +9,7 @@ const shimmer = keyframes`
 `;
 
 // Skeleton for the entire card
-const CardSkeletonWrapper = styled.dl`
+const CardSkeletonWrapper = styled.div`
 	width: 406px;
 	min-height: 73px;
 	margin-block: 16px;
@@ -42,6 +42,10 @@ const ImageSkeleton = styled.div`
 	background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 37%, #f3f3f3 63%);
 	background-size: 400% 100%;
 	animation: ${shimmer} 1.4s ease infinite;
+
+	//avoid motion sickness
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
 `;
 
 // Skeleton for the text
@@ -71,9 +75,9 @@ const TextSkeleton = styled.div`
 	}
 `;
 
-const CardSkeleton = () => {
+export const CardSkeleton = () => {
 	return (
-		<CardSkeletonWrapper>
+		<CardSkeletonWrapper data-testid='skeleton' aria-hidden='true'>
 			<ImageSkeleton />
 			<TextSkeleton>
 				<div />
@@ -85,10 +89,11 @@ const CardSkeleton = () => {
 
 export const SearchListLoading = () => {
 	return (
-		<>
+		<div role='status' aria-live='polite'>
+			<span className='sr-only'>Loading search results</span>
 			{[1, 2, 3].map((id) => (
 				<CardSkeleton key={id} />
 			))}
-		</>
+		</div>
 	);
 };
